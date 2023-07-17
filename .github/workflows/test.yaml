@@ -23,6 +23,7 @@ jobs:
               "attachments": [
                 {
                   "color": "2EB67D",
+                  "text": "[Build Success] Github Actions",
                   "blocks": [
                     {
                       "type": "context",
