@@ -1,0 +1,83 @@
+name: Test slack webhook
+
+on:
+  workflow_dispatch:
+  
+permission: write-all
+
+jobs:
+  send-slack:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Send success message
+        if: success()
+        uses: slackapi/slack-github-actions@v1.24.0
+        env:
+          SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/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'
+        with:
+        payload: |
+          {
+            "attachments": [
+              {
+                "color": "2EB67D",
+                "blocks": [
+                  {
+                    "type": "context",
+                    "elements": [
+                      {
+                        "type": "image",
+                        "image_url": "https://github.com/${{ github.actor }}.png",
+                        "alt_text": "${{ github.actor }}"
+                      },
+                      {
+                        "type": "mrkdwn",
+                        "text": "*${{ github.actor }}* has triggered the pipeline."
+                      }
+                    ]
+                  },
+                  {
+                    "type": "section",
+                    "fields": [
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Repo*\n<${{ github.server_url }}/${{ github.repository }}|${{ github.event.repository.name }}>"
+                      },
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Triggerd at*\n${{ github.event.repository.updated_at }}"
+                      },
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Actions URL*\n<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|link>"
+                      },
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Ref*\n${{ github.event.ref }}"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "section",
+                    "fields": [
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Commit message*\n${{ github.event.head_commit.message }}"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "section",
+                    "fields": [
+                      {
+                        "type": "mrkdwn",
+                        "text": "*Status*\n:white_check_mark:Build success"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
