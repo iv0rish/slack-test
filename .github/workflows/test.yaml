@@ -16,7 +16,7 @@ jobs:
         if: success()
         uses: slackapi/slack-github-action@v1.24.0
         env:
-          SLACK_WEBHOOK_URL: 'https://hooks.slack.com/services/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'
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
         with:
           payload: |
             {
