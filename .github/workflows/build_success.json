@@ -1,63 +1,54 @@
 {
-    "text": "[Build Success] Github Actions",
-    "attachments": [
-        {
-            "color": "2EB67D",
-            "blocks": [
-                {
-                    "type": "context",
-                    "elements": [
-                        {
-                            "type": "image",
-                            "image_url": "https://github.com/${{ github.actor }}.png",
-                            "alt_text": "${{ github.actor }}"
-                        },
-                        {
-                            "type": "mrkdwn",
-                            "text": "*${{ github.actor }}* has triggered the pipeline."
-                        }
-                    ]
-                },
-                {
-                    "type": "section",
-                    "fields": [
-                        {
-                            "type": "mrkdwn",
-                            "text": "*Repo*\n<${{ github.server_url }}/${{ github.repository }}|${{ github.event.repository.name }}>"
-                        },
-                        {
-                            "type": "mrkdwn",
-                            "text": "*Triggerd pipeline*\n${{ github.workflow }}"
-                        },
-                        {
-                            "type": "mrkdwn",
-                            "text": "*Actions URL*\n<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|link>"
-                        },
-                        {
-                            "type": "mrkdwn",
-                            "text": "*Ref*\n<${{ github.server_url }}/${{ github.repository }}/tree/${{ github.ref_name }}|${{ github.ref_name }}>"
-                        }
-                    ]
-                },
-                {
-                    "type": "section",
-                    "fields": [
-                        {
-                            "type": "mrkdwn",
-                            "text": "*Commit message*\n${{ github.event.head_commit.message }}"
-                        }
-                    ]
-                },
-                {
-                    "type": "section",
-                    "fields": [
-                        {
-                            "type": "mrkdwn",
-                            "text": "*Status*\n:white_check_mark:Build success"
-                        }
-                    ]
-                }
-            ]
-        }
-    ]
+	"text": "[Build Success] Github Actions",
+	"attachments": [{
+		"color": "2EB67D",
+		"blocks": [{
+				"type": "context",
+				"elements": [{
+						"type": "image",
+						"image_url": "https://github.com/${{ github.actor }}.png",
+						"alt_text": "${{ github.actor }}"
+					},
+					{
+						"type": "mrkdwn",
+						"text": "*${{ github.actor }}* has triggered the pipeline."
+					}
+				]
+			},
+			{
+				"type": "section",
+				"fields": [{
+						"type": "mrkdwn",
+						"text": "*Repo*\n<${{ github.server_url }}/${{ github.repository }}|${{ github.event.repository.name }}>"
+					},
+					{
+						"type": "mrkdwn",
+						"text": "*Triggerd pipeline*\n${{ github.workflow }}"
+					},
+					{
+						"type": "mrkdwn",
+						"text": "*Actions URL*\n<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|link>"
+					},
+					{
+						"type": "mrkdwn",
+						"text": "*Ref*\n<${{ github.server_url }}/${{ github.repository }}/tree/${{ github.ref_name }}|${{ github.ref_name }}>"
+					}
+				]
+			},
+			{
+				"type": "section",
+				"fields": [{
+					"type": "mrkdwn",
+					"text": "*Commit message*\n${{ github.event.head_commit.message }}"
+				}]
+			},
+			{
+				"type": "section",
+				"fields": [{
+					"type": "mrkdwn",
+					"text": "*Status*\n:white_check_mark:Build success"
+				}]
+			}
+		]
+	}]
 }
