@@ -21,16 +21,63 @@ jobs:
         with:
           payload: |
             {
-              "text": "Deployment started (In Progress)",
+              "text": "[Build Success] Github Actions",
               "attachments": [
                 {
-                  "pretext": "Deployment started",
-                  "color": "dbab09",
-                  "fields": [
+                  "color": "2EB67D",
+                  "blocks": [
                     {
-                      "title": "Status",
-                      "short": true,
-                      "value": "In Progress"
+                      "type": "context",
+                      "elements": [
+                        {
+                          "type": "image",
+                          "image_url": "https://github.com/${{ github.actor }}.png",
+                          "alt_text": "${{ github.actor }}"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*${{ github.actor }}* has triggered the pipeline."
+                        }
+                      ]
+                    },
+                    {
+                      "type": "section",
+                      "fields": [
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Repo*\n<${{ github.server_url }}/${{ github.repository }}|${{ github.event.repository.name }}>"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Triggerd at*\n${{ github.event.repository.updated_at }}"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Actions URL*\n<${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|link>"
+                        },
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Ref*\n${{ github.event.ref }}"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "section",
+                      "fields": [
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Commit message*\n${{ github.event.head_commit.message }}"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "section",
+                      "fields": [
+                        {
+                          "type": "mrkdwn",
+                          "text": "*Status*\n:white_check_mark:Build success"
+                        }
+                      ]
                     }
                   ]
                 }
